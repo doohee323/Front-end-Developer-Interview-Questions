@@ -101,6 +101,7 @@
 
 * What are `data-` attributes good for? 
 	* *Storing data in the DOM. I love it.*
+	* http://www.w3.org/TR/html5/dom.html#embedding-custom-non-visible-data-with-the-data-*-attributes
 
 * What are the content models in HTML4 and are they different in HTML5? 
 	* *In HTML4, there are 2 types of elements: Block and Inline. HTML5 emphasizes semantics and structure, so it has organized its elements into the categories of metadata, flow, sectioning, heading, phrasing, interactive & embedded*
@@ -136,6 +137,7 @@
 
 * Explain the "JavaScript module pattern" and when you'd use it. 
 	* *The module pattern is a way of organizing and encapsulating code via a closure. It allows you to create public/private functions and vars inside an object (the module). It lessens the likelihood of naming conflicts and unintended interactions with other functions/vars on the page. Modules should work independently and be easily extensible. Using modules enables to write widgets and plugins that interact with each other.*
+	* http://mobicon.tistory.com/338
 
 * How do you organize your code?
 	* *I like using the Module Pattern quite a bit. Whenever possible, I like to widgetize/pluginize my code.*
@@ -175,15 +177,18 @@ function Person(){} var person = Person() var person = new Person()
 
 * Have you ever used JavaScript templating? If so, what libraries have you used? (Mustache.js, Handlebars etc.)
 	* *I've used jQuery Templates and more recently Mustache. Recently though, my favorite has been to use [ICanHaz.js](http://icanhazjs.com) with Mustache. *
+	* http://blog.naver.com/playse444?Redirect=Log&logNo=150151620123
 
 * Explain "hoisting".
 	* *Hoisting is a feature in JavaScript where var declarations are moved to the top of the function body. However, the initialization/assignment of the var is not. Therefore it is considered best practice to define and assign all var declarations at the top of a function.*
+	* http://squll1.tistory.com/113
 
 * What is FOUC? How do you avoid FOUC?
 	* *FOUC = Flash Of Unstyled Content. The standard way is to do a .no-js hook on the document body that gets changed to .js by some script in the document head.*
 
 * Describe event bubbling. 
 	* *Events are dispatched first at the event target, then propagate up through the target element's parent and ancestors, 'bubbling' all the way up to the document root.*
+	* http://blog.naver.com/youngchanmmm?Redirect=Log&logNo=80204812060
 
 * What's the difference between an "attribute" and a "property"? 
 	* *An attribute carries information about an element in the form of a key value pair. A property is the key portion of that attribute.*
@@ -199,6 +204,7 @@ function Person(){} var person = Person() var person = new Person()
 
 * What is the difference between `==` and `===`? 
 	* *`===` is strictly equal, while `==` allows for truthiness, where the objects being compared are equal after type coercion. For example, `1=="1"` is true, but `1==="1"` is false.*
+	* http://en.wikipedia.org/wiki/Type_conversion
 
 * Explain how you would get a query string parameter from the browser window's URL. 
 	* *I would look up how to do it on [stackoverflow](http://stackoverflow.com/questions/901115/get-query-string-values-in-javascript).*
@@ -217,6 +223,7 @@ function Person(){} var person = Person() var person = new Person()
 [1,2,3,4,5].duplicator(); // [1,2,3,4,5,1,2,3,4,5]
 ```
 	* *Ok, but this is going to extend the built in JS Array Object, which we already said was a bad idea.*
+	* http://blog.naver.com/qqprriy?Redirect=Log&logNo=60189616131
 
 ```javascript
 Array.prototype.duplicator = function() {
@@ -299,6 +306,7 @@ Question: What is the value of foo.length?
 
 * Explain "deferreds".
 	* *A jQuery Deferred Object is used to manage callbacks based on success and failure of other functions. It is primarily used for handling ajax requests that require flexible or complex state management. Multiple callbacks can be attached to a single deferred object in a chain, with methods like `deferred.then()` `deferred.done()` and `deferred.fail()`. Callbacks can even be bound after the event dispatch has occured.*
+	* http://blog.naver.com/PostView.nhn?blogId=sef16&logNo=70167177129
 
 * What are some jQuery specific optimizations you can implement?
 	* *Use chaining as much as possible. Optimize selectors (for example using `.find()` rather than context). Cache selectors that get run more than once. Use `.on()` assigned to a parent element, rather than binding lots of event listeners to child elements. Reduce the amount of DOM manipulation (for example, if you are building a list, instead of using multiple `.append()` calls to a `<ul>` element, instead build all the `<li>` elements as a string and use `.append()` just once).*
