@@ -428,3 +428,6 @@ $(".foo div#bar:eq(0)")
 
 * jQuery: a great library or the greatest library? Discuss.
 	* *Greatestest*
+	
+* Closure: http://blog.javarouka.me/2012/01/javascripts-closure.html
+
