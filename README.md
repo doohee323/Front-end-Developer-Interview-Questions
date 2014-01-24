@@ -128,6 +128,21 @@
 
 * What are `undefined` and `undeclared` variables? 
 	* *undeclared vars have not been declared by a var statement (considered null). undefined vars have been declared but have no value.*
+	
+* What are `undefined` and `undeclared` variables? 
+	* - null
+	- declared, assigned with null value
+	- boolean casting : false
+	- number castring : 0
+	- string castring : null
+- undefined
+	- declared, not assigned with any value
+	- boolean casting : false
+	- number castring : NaN
+	- string castring : undefined
+
+null == undefined  ->  true
+null === undefined  ->  false
 
 * What is a closure, and how/why would you use one? 
 	* *Closures provide a means of putting function definitions and expressions inside of other functions. A common use would be binding event handler functions so that 'this' refers to the event object. The Module Pattern is the classic example.*
@@ -205,6 +220,12 @@ function Person(){} var person = Person() var person = new Person()
 * What is the difference between `==` and `===`? 
 	* *`===` is strictly equal, while `==` allows for truthiness, where the objects being compared are equal after type coercion. For example, `1=="1"` is true, but `1==="1"` is false.*
 	* http://en.wikipedia.org/wiki/Type_conversion
+	* A: The == checks for value equality, but === checks for both type and value.
+Few examples:
+"1" == 1; // value evaluation only, yields true
+"1" === 1; // value and type evaluation, yields false
+"1" == true; // "1" as boolean is true, value evaluation only, yields true
+"1" === false; // value and type evaluation, yields false
 
 * Explain how you would get a query string parameter from the browser window's URL. 
 	* *I would look up how to do it on [stackoverflow](http://stackoverflow.com/questions/901115/get-query-string-values-in-javascript).*
@@ -429,5 +450,67 @@ $(".foo div#bar:eq(0)")
 * jQuery: a great library or the greatest library? Discuss.
 	* *Greatestest*
 	
-* Closure: http://blog.javarouka.me/2012/01/javascripts-closure.html
+* What are Javascript closures? When would you use them? 
+	* *A closure is the local variables for a function – kept alive after the function has returned. Closures reduce the need to pass state around the application.  http://blog.javarouka.me/2012/01/javascripts-closure.html*
+
+* Difference between window.onload and onDocumentReady?
+	* *The onload event does not fire until every last piece of the page is loaded, this includes css and images, which means there’s a huge delay before any code is executed. That isnt what we want. We just want to wait until the DOM is loaded and is able to be manipulated. onDocumentReady allows the programmer to do that.*
+
+* What does “1″+2+5 evaluate to? What about 5 + 2 + “1″?
+	* *"1" + 2 + 5; // Since 1 is of type string type priority is given to string all the way, yields "125" 5 + 2 + "1"; // type priority is given to number then string, yields "71"*
+
+* What are the different data types in Javascript?
+	* *Boolean, Number, String, undefined, null*
+
+* What is the difference between innerHTML and append() in JavaScript?
+	* *InnerHTML is not standard, and its a String. The DOM is not, and although innerHTML is faster and less verbose, its better to use the DOM methods like appendChild(), firstChild.nodeValue, etc to alter innerHTML content.*
+
+* What is the relationship between ECMAScript, Javascript and Jscript?
+	* *ECMAScript is the spec for JavaScript and another name for JavaScript JavaScript is an implementation of the ECMAScript language standard and is primarily used to manipulate the DOM JScript is a JavaScript dialect MS created*
+
+* Create a Person class with public/private/privileged members and methods.
+	* function Person() {
+	// private
+	var privateMember = 'bar';
+	function privateMethod() {
+		return 'private';
+	};
+
+	// public member
+	this.publicMember = 'foo';
+
+	// privileged
+	this.privilegedMethod = function () {
+		return privateMethod();
+	};
+};
+
+// public method
+Person.prototype = {
+	publicMethod: function () {
+		return "public";
+	},
+	publicMethod2: function () {
+		return "public2";
+	};
+};
+
+// public static method
+Person.kill = function () {
+	return "dead";
+};
+
+* Why does the statement 5 * 1.015 not return 5.075?
+ 	* JavaScript uses a floating-point number format which cannot store certain numbers “exactly”. In other words, some numbers are approximations. To get precise decimal places use toFixed or Math.round
+5 * 1.015 // 5.074999999999999
+parseFloat((5 * 1.015).toFixed(3)) // 5.075
+parseFloat(Math.round((5 * 1.015) * Math.pow(10,3)) / Math.pow(10,3)) // 5.075
+
+* Replace the string "the lazy dog" with the string "the1 lazy2 dog3".
+	* var statement = "The the lazy dog";
+var statement_new = statement.split(' ').map(function(word, index) {
+return word + index;
+}).join(' ');
+
+* cf. http://codingandme.blogspot.com/2010/08/javascript-interview-questions.html
 
